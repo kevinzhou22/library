@@ -18,3 +18,27 @@ html {
     padding: 2rem 0 0 4rem;
     font-weight: bold;
 }
+
+.new-book { 
+    height: 4.5rem;
+    width: 4.5rem;
+    border-radius: 50%;
+    border: none;
+    position: fixed;
+    bottom: 3vh;
+    right: 3vw;
+    background-color: var(--hunter-green);
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.new-book:hover {
+    filter: brightness(140%);
+    transform: scale(1.1); 
+}
+
+.new-book:active {
+    filter: brightness(95%);
+    transform: scale(0.96);
+}
