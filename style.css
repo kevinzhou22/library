@@ -1,5 +1,8 @@
 /* Color Theme URL: https://coolors.co/ffffff-3f4b3b-44633f-5a9367-5cab7d*/
-
+html {
+    font-size: 62.5%;
+    font-family: sans-serif;
+}
 :root {
     --rifle-green: #3F4B3B;
     --hunter-green: #44633F;
@@ -7,3 +10,11 @@
     --shiny-shamrock-green: #5CAB7D;
 }
 
+.header {
+    height: 6rem;
+    background: var(--hunter-green);
+    color: white;
+    font-size: 4rem;
+    padding: 2rem 0 0 4rem;
+    font-weight: bold;
+}
