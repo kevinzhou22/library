@@ -9,6 +9,10 @@ html {
     --russian-green: #5A9367;
     --shiny-shamrock-green: #5CAB7D;
 }
+body.using-mouse :focus {
+    outline: none;
+}
+
 
 .header {
     height: 6rem;
@@ -34,11 +38,11 @@ html {
 }
 
 .new-book:hover {
-    filter: brightness(140%);
-    transform: scale(1.1); 
+    transform: scale(1.05);
 }
 
 .new-book:active {
+ 
     filter: brightness(95%);
     transform: scale(0.96);
 }
