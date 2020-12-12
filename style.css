@@ -35,6 +35,8 @@ body.using-mouse :focus {
     color: white;
     font-size: 3rem;
     font-weight: bold;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .new-book:hover {
