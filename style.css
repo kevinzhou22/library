@@ -48,3 +48,153 @@ body.using-mouse :focus {
     filter: brightness(95%);
     transform: scale(0.96);
 }
+
+.bg-modal {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    z-index: 999;
+}
+
+.modal-content {
+    width: 45rem;
+    background-color: white;
+    border-radius: 0.4rem;
+    position: relative;
+    padding: 3rem 4rem;
+    box-sizing: border-box;
+}
+.modal-content h2 {
+    font-size: 2.6rem;
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+form > div {
+    position: relative;
+}
+
+
+form input[type="text"], form input[type="tel"] {
+    width: 100%;
+    height: 4rem;
+    border: 2px solid rgb(220,220,220);
+    border-radius: 0.4rem;
+    box-shadow: none;
+    appearance: none;
+    font-size: 1.6rem;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    transition: all 0.2s ease-out;
+}
+
+form input[type="text"] + label, form input[type="tel"] + label{
+ color: #999;
+ position: absolute;
+ left: 1.3rem;
+ top: 1.25rem;
+ font-size: 1.6rem;
+ background-color: white;
+ transition: all 0.2s ease-out;
+
+}
+form input[type="text"]:focus + label, form input[type="tel"]:focus + label,
+form input[type="text"]:not(:placeholder-shown) + label, form input[type="tel"]:not(:placeholder-shown) + label {
+    transform: translate(0,-1.9rem) scale(0.8);
+}
+
+
+
+form input[type="text"]:not(:placeholder-shown) + label, form input[type="tel"]:not(:placeholder-shown) + label {
+    color: black
+}
+form input[type="text"]:not(:placeholder-shown), form input[type="tel"]:not(:placeholder-shown) {
+    border-color: black;
+}
+form input[type="text"]:focus + label, form input[type="tel"]:focus + label {
+    color: var(--russian-green)
+}
+form input[type="text"]:focus, form input[type="tel"]:focus {
+    border-color: var(--russian-green);
+}
+form > div {
+    margin-top: 4rem;
+}
+form label[for="read-book"] {
+    display: block;
+    text-align: left;
+    font-size: 1.7rem;
+    font-weight: bold;
+    margin-top: 2rem;
+}
+
+input[type="checkbox"] {
+    background-color: gray;
+    appearance: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 0.3rem;
+    position: relative; 
+    vertical-align: -5px;
+    cursor: pointer;
+}
+
+input[type="checkbox"]::before {
+    content: "✔";
+    position: absolute;
+    font-size: 1.5rem;
+    right: 0.1rem;
+    top: -0.03rem;
+    color: white;
+    visibility: hidden;
+}
+
+input[type="checkbox"]:checked::before {
+    visibility: visible;
+}
+
+.modal-buttons {
+    margin-top: 2rem;
+    text-align: right;
+}
+
+.modal-buttons button {
+    display: inline-block;
+    margin-left: 0.6rem;
+    display: inline-block;
+    font-size: 1.7rem;
+    border: none;
+    padding: 1.2rem 2rem;
+    font-weight: bold;
+    border-radius: 0.2rem;
+    cursor: pointer;
+}
+.submit {
+    background-color: var(--russian-green);
+    color: white;
+}
+.cancel {
+    background-color: #EEE;
+    color: black;
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 1.4rem;
+    font-size: 4.2rem;
+    transform: rotate(45deg);
+    user-select: none;
+    -webkit-user-select: none;
+    color: darkgray;
+}
+
+.close:hover {
+    filter: brightness(110%);
+}

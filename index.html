@@ -8,6 +8,34 @@
 </head>
 <body>
     <header class="header">Library</header>
+    <div class="bg-modal">
+        <div class="modal-content">
+            <div class="close">+</div>
+            <form action="">
+                <h2>New Book</h2>
+                <div class="name">
+                    <input id="name-text" type="text" name="name" placeholder=" ">
+                    <label for="name-text">Name</label>
+                </div>
+                <div class="author">
+                    <input type="text" id="author-text" name="author" placeholder=" ">
+                    <label for="author-text">Author</label>
+                </div>
+                <div class="pages">
+                    <input type="tel" id="pages-text" name="pages" placeholder=" ">
+                    <label for="pages-text">Pages</label>
+                </div>
+                <label for="read-book">
+                    <input type="checkbox" name="read-book" id="read-book">
+                    Has been read
+                </label>
+                <div class="modal-buttons">
+                    <button type="button" class="cancel">Cancel</button>
+                    <button type="button" class="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
     <button class="new-book">+</button>
     <script src=script.js></script>
 </body>

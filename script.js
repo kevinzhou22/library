@@ -22,3 +22,18 @@ Book.prototype.info = function() {
 function addBookToLibrary(title, author, pages, read) {
     myLibrary.push(new Book(title, author, pages, read));
 }
+
+const newBookButton = document.querySelector(".new-book");
+newBookButton.addEventListener("click", () => {
+    document.querySelector(".bg-modal").style.display =  "flex";
+});
+
+document.querySelector(".close").addEventListener("click", closeModal);
+
+document.querySelector(".cancel").addEventListener("click", closeModal);
+
+
+function closeModal() {
+    document.querySelector(".bg-modal").style.display = "none";
+    document.querySelector(".bg-modal form").reset();
+}
