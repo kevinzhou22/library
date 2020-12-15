@@ -12,6 +12,7 @@ document.body.addEventListener("keydown", (e) => {
 
 /* Initilialization for various controls on a page */
 const newBookButton = document.querySelector(".new-book");
+const booksDisplay = document.querySelector(".books-display");
 newBookButton.addEventListener("click", () => {
     document.querySelector(".bg-modal").style.display =  "flex";
 });
@@ -42,8 +43,8 @@ function addBookToLibrary(title,author,pages,read) {
 
 /* Handles deleting a book to the library */
 function deleteBookFromLibrary(book) {
-    myLibrary.splice(myLibrary.indexOf(newBook,1))
-
+    myLibrary.splice(myLibrary.indexOf(book),1);
+    rerender();
 }
 
 /* Handles updating the information associated with a book in the library */
@@ -52,13 +53,61 @@ function updateBookInLibrary(book,title,author,pages,read) {
     book.author = author;
     book.pages = pages;
     book.read=read;
+    rerender();
 }
 
 /* updates the graphical display of the library to comply with the myLibrary array, 
 displaying the last element in the array first on the graphical interface */
 function rerender() {
+    booksDisplay.textContent = "";
+    for(let i = 0; i < myLibrary.length; i++) {
+        const newBookContainer = document.createElement("div");
+        newBookContainer.classList.add("book-container");
+        const bookOptions = document.createElement("div");
+        bookOptions.classList.add("options");
+        const bookSettings = document.createElement("button");
+        bookSettings.classList.add("settings");
+        bookSettings.setAttribute("alt","settings");
+        bookSettings.setAttribute("type","button");
+        const bookSettingsImage = document.createElement("img");
+        bookSettingsImage.setAttribute("src",'images/002-settings.png')
+        bookSettingsImage.setAttribute("alt","settings");
+        bookSettings.appendChild(bookSettingsImage);
+        bookOptions.appendChild(bookSettings);
+        const bookRemove = document.createElement("button");
+        bookRemove.classList.add("remove");
+        bookRemove.setAttribute("src","images/001-close.png");
+        bookRemove.setAttribute("alt","remove");
+        bookRemove.setAttribute("type","button");
+        const bookRemoveImage = document.createElement("img");
+        bookRemoveImage.setAttribute("src","images/001-close.png");
+        bookRemoveImage.setAttribute("alt","remove");
+        bookRemove.appendChild(bookRemoveImage);
+        bookOptions.appendChild(bookRemove);
+        newBookContainer.appendChild(bookOptions);
+        const bookTitle = document.createElement("h2");
+        bookTitle.classList.add("book-title");
+        bookTitle.textContent = myLibrary[i].title;
+        newBookContainer.appendChild(bookTitle);
+        const bookAuthor = document.createElement("p");
+        bookAuthor.classList.add("book-author");
+        bookAuthor.textContent = `by ${myLibrary[i].author}`;
+        newBookContainer.appendChild(bookAuthor);
+        const bookPages = document.createElement("p");
+        bookPages.textContent = `${myLibrary[i].pages} pages`;
+        bookPages.classList.add("book-pages");
+        newBookContainer.appendChild(bookPages);
+        const bookReadParagraph = document.createElement("p");
+        bookReadParagraph.textContent = myLibrary[i].read ? "Completed" : "Not read yet";
+        bookReadParagraph.classList.add("book-read");
+        newBookContainer.appendChild(bookReadParagraph);
+        booksDisplay.prepend(newBookContainer);
+    }  
 
 }
+
+
+
 /* callback function for closing the modal that enables input of data for a new book */
 function closeModal() {
     document.querySelector(".bg-modal").style.display = "none";

@@ -219,26 +219,26 @@ input[type="checkbox"]:checked::before {
     box-sizing: border-box
 }
 
-.book-container .title {
+.book-container .book-title {
     font-weight: bold;
     font-size: 2.2rem;
     color: var(--russian-green);
     margin: 1rem 0;
 }
 
-.book-container .author {
+.book-container .book-author {
     color: black;
     font-size: 1.7rem;
     margin: 1rem 0;
 }
 
-.book-container .pages {
+.book-container .book-pages {
     color: #222;
     font-size: 1.6rem;
     margin: 1rem 0;
 }
 
-.book-container .read {
+.book-container .book-read {
     margin-top: 11rem;
     margin-bottom: 0.5rem;
     font-size: 1.7rem;
