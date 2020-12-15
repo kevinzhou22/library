@@ -7,9 +7,6 @@ document.body.addEventListener("keydown", (e) => {
 });
 
 
-
-
-
 /* Initilialization for various controls on a page */
 const newBookButton = document.querySelector(".new-book");
 const booksDisplay = document.querySelector(".books-display");
@@ -65,15 +62,6 @@ function rerender() {
         newBookContainer.classList.add("book-container");
         const bookOptions = document.createElement("div");
         bookOptions.classList.add("options");
-        const bookSettings = document.createElement("button");
-        bookSettings.classList.add("settings");
-        bookSettings.setAttribute("alt","settings");
-        bookSettings.setAttribute("type","button");
-        const bookSettingsImage = document.createElement("img");
-        bookSettingsImage.setAttribute("src",'images/002-settings.png')
-        bookSettingsImage.setAttribute("alt","settings");
-        bookSettings.appendChild(bookSettingsImage);
-        bookOptions.appendChild(bookSettings);
         const bookRemove = document.createElement("button");
         bookRemove.classList.add("remove");
         bookRemove.setAttribute("src","images/001-close.png");
