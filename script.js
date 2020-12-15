@@ -127,6 +127,9 @@ function rerender() {
         const bookReadParagraph = document.createElement("p");
         bookReadParagraph.textContent = myLibrary[i].read ? "Completed" : "Not read yet";
         bookReadParagraph.classList.add("book-read");
+        if(myLibrary[i].read) {
+            bookReadParagraph.classList.add("completed");
+        }
         newBookContainer.appendChild(bookReadParagraph);
         newBookContainer.querySelector(".remove").addEventListener("click",onClickOfXButtonOnBook);
         newBookContainer.querySelector(".book-read").addEventListener("click",onClickOfBookReadText);

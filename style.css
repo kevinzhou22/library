@@ -250,6 +250,11 @@ input[type="checkbox"]:checked::before {
     left: 50%;
     transform: translatex(-50%);
     font-size: 1.7rem;
+    font-weight: 500;
+}
+
+.book-container .book-read.completed {
+    color: var(--russian-green);
 }
 
 .book-container .book-read:hover {
