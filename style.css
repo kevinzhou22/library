@@ -251,6 +251,11 @@ input[type="checkbox"]:checked::before {
     transform: translatex(-50%);
     font-size: 1.7rem;
 }
+
+.book-container .book-read:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
 .book-container .options button {
     border: none;
     margin: 0 0.6rem;

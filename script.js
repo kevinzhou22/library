@@ -16,7 +16,7 @@ newBookButton.addEventListener("click", () => {
 document.querySelector(".close").addEventListener("click", closeModal);
 document.querySelector(".cancel").addEventListener("click", closeModal);
 document.querySelector(".bg-modal form .submit").addEventListener("click", submitNewBookForm);
-document.querySelector(".book-container .remove").addEventListener("click",onClickOfXButtonOnBook);
+
 /* Defines what a Book object is and how they are stored */
 
 let myLibrary = [];
@@ -42,20 +42,37 @@ function submitNewBookForm(e) {
     closeModal();
 }
 
+/* Callback function handling removing a book from the library when the X button on a book is clicked */
 function onClickOfXButtonOnBook(e) {
     const bookContainer = e.currentTarget.closest(".book-container");
     const title = bookContainer.querySelector(".book-title").textContent;
-    const author = bookContainer.querySelector(".book-author").textContent;
-    const pages = +bookContainer.querySelector(".book-pages").textContent;
-    const read = bookContainer.querySelector(".book-read").textContent === "Competed" ? true : false;
+    const author = bookContainer.querySelector(".book-author").textContent.slice(3);
+    const pages = +bookContainer.querySelector(".book-pages").textContent.slice(0,
+            bookContainer.querySelector(".book-pages").textContent.indexOf("p")-1);
+    const read = bookContainer.querySelector(".book-read").textContent === "Completed" ? true : false;
     const bookToDelete = myLibrary.find(book => {
         return book.title === title && book.author === author && book.pages === pages && book.read === read;
     });
     deleteBookFromLibrary(bookToDelete);
 }
+
+/* Callback function handling toggling a book's "book read" state when the book read text is clicked */
+function onClickOfBookReadText(e) {
+    const bookContainer = e.currentTarget.closest(".book-container");
+    const title = bookContainer.querySelector(".book-title").textContent;
+    const author = bookContainer.querySelector(".book-author").textContent.slice(3);
+    const pages = +bookContainer.querySelector(".book-pages").textContent.slice(0,
+        bookContainer.querySelector(".book-pages").textContent.indexOf("p")-1);    const read = bookContainer.querySelector(".book-read").textContent === "Completed" ? true : false;
+    const bookToUpdate = myLibrary.find(book => {
+        return book.title === title && book.author === author && book.pages === pages && book.read === read;
+    });
+    updateBookInLibrary(bookToUpdate,title,author,pages,!read)
+}
+
+
 /* Handles adding a new book to the library */
 function addBookToLibrary(title,author,pages,read) {
-    const newBook = new Book(title,author,pages,read);
+    const newBook = new Book(title,author,+pages,read);
     myLibrary.push(newBook);
     rerender();
 }
@@ -112,6 +129,7 @@ function rerender() {
         bookReadParagraph.classList.add("book-read");
         newBookContainer.appendChild(bookReadParagraph);
         newBookContainer.querySelector(".remove").addEventListener("click",onClickOfXButtonOnBook);
+        newBookContainer.querySelector(".book-read").addEventListener("click",onClickOfBookReadText);
         booksDisplay.prepend(newBookContainer);
     }  
 
