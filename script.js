@@ -15,7 +15,7 @@ newBookButton.addEventListener("click", () => {
 });
 document.querySelector(".close").addEventListener("click", closeModal);
 document.querySelector(".cancel").addEventListener("click", closeModal);
-
+document.querySelector(".bg-modal form .submit").addEventListener("click", submitNewBookForm);
 /* Defines what a Book object is and how they are stored */
 
 let myLibrary = [];
@@ -30,6 +30,16 @@ function Book(title,author,pages,read) {
 Book.prototype.info = function() {
     return `${title} by ${author}, ${page} pages, ${read ? "already read" : "not read yet"}`;
 };
+
+/* callback function for the "Submit" button on the modal popup that handles adding a new book to the library */
+function submitNewBookForm(e) {
+    const title = document.getElementById("name-text").value;
+    const author = document.getElementById("author-text").value;
+    const pages = document.getElementById("pages-text").value;
+    const read = document.getElementById("read-book").checked;
+    addBookToLibrary(title,author,pages,read);
+    closeModal();
+}
 
 /* Handles adding a new book to the library */
 function addBookToLibrary(title,author,pages,read) {
