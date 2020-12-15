@@ -16,6 +16,7 @@ newBookButton.addEventListener("click", () => {
 document.querySelector(".close").addEventListener("click", closeModal);
 document.querySelector(".cancel").addEventListener("click", closeModal);
 document.querySelector(".bg-modal form .submit").addEventListener("click", submitNewBookForm);
+document.querySelector(".book-container .remove").addEventListener("click",onClickOfXButtonOnBook);
 /* Defines what a Book object is and how they are stored */
 
 let myLibrary = [];
@@ -41,6 +42,17 @@ function submitNewBookForm(e) {
     closeModal();
 }
 
+function onClickOfXButtonOnBook(e) {
+    const bookContainer = e.currentTarget.closest(".book-container");
+    const title = bookContainer.querySelector(".book-title").textContent;
+    const author = bookContainer.querySelector(".book-author").textContent;
+    const pages = +bookContainer.querySelector(".book-pages").textContent;
+    const read = bookContainer.querySelector(".book-read").textContent === "Competed" ? true : false;
+    const bookToDelete = myLibrary.find(book => {
+        return book.title === title && book.author === author && book.pages === pages && book.read === read;
+    });
+    deleteBookFromLibrary(bookToDelete);
+}
 /* Handles adding a new book to the library */
 function addBookToLibrary(title,author,pages,read) {
     const newBook = new Book(title,author,pages,read);
@@ -99,6 +111,7 @@ function rerender() {
         bookReadParagraph.textContent = myLibrary[i].read ? "Completed" : "Not read yet";
         bookReadParagraph.classList.add("book-read");
         newBookContainer.appendChild(bookReadParagraph);
+        newBookContainer.querySelector(".remove").addEventListener("click",onClickOfXButtonOnBook);
         booksDisplay.prepend(newBookContainer);
     }  
 
