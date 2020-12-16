@@ -32,6 +32,22 @@ Book.prototype.info = function() {
     return `${title} by ${author}, ${page} pages, ${read ? "already read" : "not read yet"}`;
 };
 
+/* Initializes localStorage */
+const localStorageWorks = isStorageAvailable("localStorage");
+const localStorage = window.localStorage;
+if(localStorageWorks) {
+    if(!localStorage.getItem("myLibrary")) {
+        localStorage.setItem("myLibrary",JSON.stringify(myLibrary));
+    } else {
+        myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+        rerender();
+    }
+}
+
+
+
+
+
 /* callback function for the "Submit" button on the modal popup that handles adding a new book to the library */
 function submitNewBookForm(e) {
     const title = document.getElementById("name-text").value;
@@ -75,12 +91,14 @@ function addBookToLibrary(title,author,pages,read) {
     const newBook = new Book(title,author,+pages,read);
     myLibrary.push(newBook);
     rerender();
+    updateLocalStorage();
 }
 
 /* Handles deleting a book to the library */
 function deleteBookFromLibrary(book) {
     myLibrary.splice(myLibrary.indexOf(book),1);
     rerender();
+    updateLocalStorage();
 }
 
 /* Handles updating the information associated with a book in the library */
@@ -90,6 +108,7 @@ function updateBookInLibrary(book,title,author,pages,read) {
     book.pages = pages;
     book.read=read;
     rerender();
+    updateLocalStorage();
 }
 
 /* updates the graphical display of the library to comply with the myLibrary array, 
@@ -144,4 +163,27 @@ function rerender() {
 function closeModal() {
     document.querySelector(".bg-modal").style.display = "none";
     document.querySelector(".bg-modal form").reset();
+}
+
+/* Checks whether localStorage is supported and available */
+function isStorageAvailable(type) {
+    let storage;
+    try {
+        storage = window[type];
+        let x = "__storage_text__";
+        storage.setItem(x,x);
+        storage.removeItem(x);
+        return true;
+    } catch {
+        return e instanceof DOMException && (
+            e.code === 22 ||
+            e.code === 1014 ||
+            e.name === "QuotaExceededError" ||
+            e.name === "NS_ERROR_DOM_QUOTA_REACHED") &&
+            (storage && storage.length !== 0);  
+    }
+}
+
+function updateLocalStorage() {
+    localStorage.setItem("myLibrary",JSON.stringify(myLibrary));
 }
