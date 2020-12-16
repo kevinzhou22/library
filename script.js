@@ -28,10 +28,6 @@ function Book(title,author,pages,read) {
     this.read = read;
 }
 
-Book.prototype.info = function() {
-    return `${title} by ${author}, ${page} pages, ${read ? "already read" : "not read yet"}`;
-};
-
 /* Initializes localStorage */
 const localStorageWorks = isStorageAvailable("localStorage");
 const localStorage = window.localStorage;
