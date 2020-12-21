@@ -21,11 +21,17 @@ document.querySelector(".bg-modal form .submit").addEventListener("click", submi
 
 let myLibrary = [];
 
-function Book(title,author,pages,read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+class Book {
+    title;
+    author;
+    pages;
+    read;
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
 }
 
 /* Initializes localStorage */
