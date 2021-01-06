@@ -52,6 +52,11 @@ if(localStorageWorks) {
 
 /* callback function for the "Submit" button on the modal popup that handles adding a new book to the library */
 function submitNewBookForm(e) {
+    const isValid = document.querySelector('.bg-modal form').reportValidity();
+
+    if (!isValid) {
+      return;
+    }
     const title = document.getElementById("name-text").value;
     const author = document.getElementById("author-text").value;
     const pages = document.getElementById("pages-text").value;
