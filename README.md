@@ -1,3 +1,9 @@
+## Library
+
+Basic website built as JavaScript practice.
+
+## Reflection
+
 This project was initially meant to be a basic exercise in using constructors. While
 that goal was achieved, what turned out to be more time-consuming was the process of working
 with forms.
