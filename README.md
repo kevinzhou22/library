@@ -1,4 +1,4 @@
-## Library
+# Library
 
 Basic website built as JavaScript practice.
 
